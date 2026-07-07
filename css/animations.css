@@ -1,0 +1,92 @@
+/* ==========================================================================
+   REVEAL BASE STATES
+   GSAP sets the actual "from" values inline (so it can stagger/tween them),
+   but these classes give a sane no-JS fallback and prevent a flash of fully
+   visible content before ScrollTrigger registers.
+   ========================================================================== */
+[data-reveal]{
+  opacity: 0;
+}
+.js-ready [data-reveal]{
+  /* once GSAP has taken over, it controls opacity/transform directly */
+}
+.no-js [data-reveal]{
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   FLOATING ELEMENTS — gentle sinusoidal drift for decorative dots/shapes
+   ========================================================================== */
+.float-slow{ animation: float-slow 9s ease-in-out infinite; }
+.float-med{ animation: float-med 6.5s ease-in-out infinite; }
+@keyframes float-slow{
+  0%, 100%{ transform: translate3d(0, 0, 0); }
+  50%{ transform: translate3d(0, -14px, 0); }
+}
+@keyframes float-med{
+  0%, 100%{ transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%{ transform: translate3d(6px, -10px, 0) rotate(4deg); }
+}
+
+/* ==========================================================================
+   MASK / CLIP-PATH REVEAL — used for section transitions & card entrances
+   ========================================================================== */
+.mask-reveal{
+  clip-path: inset(0 0 100% 0);
+}
+.clip-diagonal{
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0% 100%);
+}
+
+/* ==========================================================================
+   BLUR REVEAL
+   ========================================================================== */
+.blur-reveal{
+  filter: blur(14px);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   TEXT — split reveal helpers
+   ========================================================================== */
+.split-word, .split-char{
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.text-glow{
+  text-shadow: 0 0 24px rgba(127,217,196,.35);
+}
+
+/* ==========================================================================
+   GLASSMORPHISM PANEL — opacity/blur react to a --glass-strength var
+   that scroll.js updates per section
+   ========================================================================== */
+.glass-panel{
+  --glass-strength: .5;
+  background: rgba(19, 12, 12, calc(var(--glass-strength) * .6));
+  backdrop-filter: blur(calc(var(--glass-strength) * 18px));
+  -webkit-backdrop-filter: blur(calc(var(--glass-strength) * 18px));
+  border: 1px solid rgba(245,239,230, calc(var(--glass-strength) * .12));
+  transition: background .4s var(--ease-out), backdrop-filter .4s var(--ease-out);
+}
+
+/* ==========================================================================
+   MAGNETIC / TILT SUPPORT
+   effects.js writes --mx / --my / --tilt-x / --tilt-y per element;
+   these rules just consume them.
+   ========================================================================== */
+[data-magnetic]{
+  transform: translate3d(calc(var(--mx, 0) * 1px), calc(var(--my, 0) * 1px), 0);
+  transition: transform .25s var(--ease-out);
+}
+[data-tilt]{
+  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
+  transition: transform .35s var(--ease-out);
+}
+[data-tilt]:not(:hover){ --tilt-x: 0deg; --tilt-y: 0deg; }
+
+/* ==========================================================================
+   COUNTER
+   ========================================================================== */
+.about__stat-num{ font-variant-numeric: tabular-nums; }

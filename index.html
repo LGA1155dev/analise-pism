@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio — Design &amp; Desenvolvimento</title>
+  <meta name="description" content="Desenvolvimento de sites e experiências digitais sob medida.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="no-js">
+
+  <!-- ============ AMBIENT LAYERS (grain, cursor, top progress) ============ -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="top-progress" aria-hidden="true"><span id="topProgressFill" class="top-progress__fill"></span></div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__ring" id="cursorRing"></div>
+    <div class="cursor__dot" id="cursorDot"></div>
+  </div>
+
+  <!-- ============ LOADER ============ -->
+  <div id="loader" class="loader">
+    <div class="loader__mark">S.</div>
+    <div class="loader__bar"><span id="loaderProgress" class="loader__bar-fill"></span></div>
+    <div class="loader__pct" id="loaderPct">0%</div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#" class="nav__mark">Studio<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#sobre" data-nav="sobre" data-magnetic>Sobre</a>
+      <a href="#projetos" data-nav="projetos" data-magnetic>Projetos</a>
+      <a href="#contato" data-nav="contato" data-magnetic>Contato</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO (scroll-driven 3D scene) ============ -->
+  <section id="hero" class="hero">
+    <div class="hero__sticky">
+      <div class="hero__mesh-bg" aria-hidden="true"></div>
+      <canvas id="heroCanvas" class="hero__canvas"></canvas>
+      <canvas id="heroParticles" class="hero__particles"></canvas>
+
+      <div class="hero__vignette"></div>
+      <div class="hero__spotlight" id="heroSpotlight"></div>
+
+      <div class="hero__lockup">
+        <h1 class="hero__title">Projeto<span class="hero__title-italic">Pism.</span></h1>
+        <p class="hero__subtitle" data-split>Design moderno &amp; objetivo de comparar notas e ver quantas pessoas de cada turma estão fazendo o PISM.</p>
+      </div>
+
+      <div class="hero__eyebrow">
+        <span>SOBRE</span>
+        <span class="hero__eyebrow-dash">—</span>
+        <span>SCROLL</span>
+      </div>
+
+      <div class="hero__progress">
+        <span id="heroProgressFill" class="hero__progress-fill"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOBRE ============ -->
+  <section id="sobre" class="about">
+    <div class="about__inner">
+      <p class="about__eyebrow" data-reveal="fade-up">Sobre</p>
+      <h2 class="about__statement" data-reveal="fade-up">
+        Basicamente, o trabalho é sobre <em>pegar dados de alunos de todas as salas, incluindo 2M1, 2M2 e 3M1</em> e transformar em informações...
+        para assim ver as respectivas notas ponderadas de cada aluno, quantas pessoas de cada sala estão fazendo o PISM, ver suas notas objetiva + discursiva e compará-las.
+      </h2>
+      <p class="about__body" data-reveal="fade-up">
+        Trabalho no cruzamento entre design e código: interfaces limpas,
+        movimento com propósito e performance que não sacrifica estética.
+        Cada projeto é construído do zero, sem templates, com atenção a
+        cada detalhe — do primeiro scroll ao último clique.
+      </p>
+
+      <div class="about__stats">
+        <div class="about__stat" data-reveal="fade-up">
+          <span class="about__stat-num">30+</span>
+          <span class="about__stat-label">Alunos analisados</span>
+        </div>
+        <div class="about__stat" data-reveal="fade-up">
+          <span class="about__stat-num">10+</span>
+          <span class="about__stat-label">Acima da média</span>
+        </div>
+        <div class="about__stat" data-reveal="fade-up">
+          <span class="about__stat-num">50%</span>
+          <span class="about__stat-label">De aproveitamento</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJETOS ============ -->
+  <section id="projetos" class="projects">
+    <div class="projects__header">
+      <p class="projects__eyebrow" data-reveal="fade-up">Projetos</p>
+      <h2 class="projects__title" data-reveal="fade-up">Trabalhos selecionados</h2>
+    </div>
+
+    <iframe width="100%" height="546" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/f0f88dcfc3fafc13/IQQSAEZVcrlkQZd5R6XfLnoGASoUn_2N73Nrkg9SNpq3rQk?wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+
+    <div class="projects__grid">
+      <article class="card" data-tilt>
+        <div class="card__media card__media--one"></div>
+        <div class="card__info">
+          <h3 class="card__title">Aurora Studio</h3>
+          <p class="card__tags">Branding · Web Design · Motion</p>
+        </div>
+      </article>
+
+      <article class="card" data-tilt>
+        <div class="card__media card__media--two"></div>
+        <div class="card__info">
+          <h3 class="card__title">Nimbus Capital</h3>
+          <p class="card__tags">Landing Page · UI · Desenvolvimento</p>
+        </div>
+      </article>
+
+      <article class="card" data-tilt>
+        <div class="card__media card__media--three"></div>
+        <div class="card__info">
+          <h3 class="card__title">Ferrugem Atelier</h3>
+          <p class="card__tags">E-commerce · Design System</p>
+        </div>
+      </article>
+
+      <article class="card" data-tilt>
+        <div class="card__media card__media--four"></div>
+        <div class="card__info">
+          <h3 class="card__title">Vero Arquitetura</h3>
+          <p class="card__tags">Site institucional · 3D · Scroll</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section id="contato" class="contact">
+    <div class="contact__inner">
+      <p class="contact__eyebrow" data-reveal="fade-up">Contato</p>
+      <h2 class="contact__title" data-reveal="fade-up">
+        Vamos criar algo <em>memorável</em>.
+      </h2>
+
+      <form class="contact__form" data-reveal="fade-up">
+        <div class="contact__row">
+          <div class="field">
+            <label for="name">Nome</label>
+            <input id="name" type="text" name="name" placeholder="Seu nome" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" name="email" placeholder="seu@email.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" rows="4" placeholder="Conte um pouco sobre o seu projeto"></textarea>
+        </div>
+        <button type="submit" class="btn" data-magnetic>
+          <span>Enviar mensagem</span>
+        </button>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Studio.</span>
+      <span>Feito com HTML, CSS, JavaScript, Three.js &amp; GSAP.</span>
+    </footer>
+  </section>
+
+  <!-- Three.js r128 (per project constraints: no OrbitControls, no CapsuleGeometry) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>document.body.classList.remove('no-js');</script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
