@@ -146,7 +146,7 @@ export class Hero3D {
         // que sua maior dimensão fique em torno de ~2.4 unidades de cena.
         const size = box.getSize(new THREE.Vector3());
         const maxDimension = Math.max(size.x, size.y, size.z) || 1;
-        const targetSize = 20;
+        const targetSize = 2.4;
         const autoScale = targetSize / maxDimension;
         model.scale.setScalar(autoScale);
 
