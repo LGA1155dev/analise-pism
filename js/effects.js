@@ -139,8 +139,8 @@ export function initTopProgress(fillEl) {
 /* so GSAP can stagger-reveal them. Runs once, before first paint.   */
 /* ---------------------------------------------------------------- */
 export function prepareSplitText() {
-  document.querySelectorAll('[data-split]').forEach(el => {
-    const mode = el.dataset.split || 'words';
+  document.querySelectorAll('[data-split], [data-split-scroll]').forEach(el => {
+    const mode = el.dataset.split || el.dataset.splitScroll || 'words';
     const text = el.textContent.trim();
     el.textContent = '';
     const units = mode === 'chars' ? text.split('') : text.split(/\s+/);

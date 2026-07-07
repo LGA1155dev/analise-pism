@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/animations.css">
 </head>
 <body class="no-js">
 
@@ -71,11 +71,11 @@
   <section id="sobre" class="about">
     <div class="about__inner">
       <p class="about__eyebrow" data-reveal="fade-up">Sobre</p>
-      <h2 class="about__statement" data-reveal="fade-up">
+      <h2 class="about__statement" data-reveal="blur">
         Basicamente, o trabalho é sobre <em>pegar dados de alunos de todas as salas, incluindo 2M1, 2M2 e 3M1</em> e transformar em informações...
         para assim ver as respectivas notas ponderadas de cada aluno, quantas pessoas de cada sala estão fazendo o PISM, ver suas notas objetiva + discursiva e compará-las.
       </h2>
-      <p class="about__body" data-reveal="fade-up">
+      <p class="about__body" data-split-scroll="words">
         Trabalho no cruzamento entre design e código: interfaces limpas,
         movimento com propósito e performance que não sacrifica estética.
         Cada projeto é construído do zero, sem templates, com atenção a
@@ -83,6 +83,9 @@
       </p>
 
       <div class="about__stats">
+        <div class="about__stats-line svg-draw" aria-hidden="true">
+          <svg viewBox="0 0 600 24" preserveAspectRatio="none"><path d="M4,12 L596,12"/></svg>
+        </div>
         <div class="about__stat" data-reveal="fade-up">
           <span class="about__stat-num">30+</span>
           <span class="about__stat-label">Alunos analisados</span>
@@ -100,10 +103,10 @@
   </section>
 
   <!-- ============ PROJETOS ============ -->
-  <section id="projetos" class="projects">
+  <section id="projetos" class="projects" data-reveal="circle-mask">
     <div class="projects__header">
       <p class="projects__eyebrow" data-reveal="fade-up">Projetos</p>
-      <h2 class="projects__title" data-reveal="fade-up">Trabalhos selecionados</h2>
+      <h2 class="projects__title" data-split-scroll="chars">Trabalhos selecionados</h2>
     </div>
 
     <iframe width="100%" height="546" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/f0f88dcfc3fafc13/IQQSAEZVcrlkQZd5R6XfLnoGASoUn_2N73Nrkg9SNpq3rQk?wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
@@ -178,13 +181,24 @@
     </footer>
   </section>
 
+  <!-- ============ SCROLL PROGRESS RING (floating, back-to-top) ============ -->
+  <button id="scrollRingBtn" class="scroll-ring" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 44 44" aria-hidden="true">
+      <circle class="scroll-ring__bg" cx="22" cy="22" r="19"></circle>
+      <circle class="scroll-ring__fg" id="scrollRingFg" cx="22" cy="22" r="19"></circle>
+    </svg>
+    <span class="scroll-ring__arrow" aria-hidden="true">↑</span>
+  </button>
+
   <!-- Three.js r128 (per project constraints: no OrbitControls, no CapsuleGeometry) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GLTFLoader matching r128 exactly, UMD build (attaches THREE.GLTFLoader to the global THREE) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script>document.body.classList.remove('no-js');</script>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>
